@@ -12,54 +12,35 @@ export class AppController {
 
   @Post()
   async generator(@Body() request): Promise<string> {
+    console.log(request);
+    /**
+     * comentado momentaneamente
+     */
+    // const dir = './angular';
+    // await del(dir);
+    // await fs.mkdirSync(dir);
+    // await process.chdir(dir);
 
-    const dir = './angular';
-    // if (fs.existsSync(dir)){
-      await del(dir);
-      await fs.mkdirSync(dir);
-      await process.chdir(dir);
-    // }
-
-
-    await exec('ng new test --skip-install', (err, stdout, stderr) => {
-      if (err) {
-        // node couldn't execute the command
-        return;
-      }
-      var zipFolder = require('zip-folder');
+    // await exec('ng new test --skip-install', (err, stdout, stderr) => {
+    //   if (err) {
+    //     // node couldn't execute the command
+    //     return;
+    //   }
+    //   var zipFolder = require('zip-folder');
  
-      zipFolder('./test', '../foo.zip', function(err) {
-          if(err) {
-              console.log('oh no!', err);
-          } else {
-              console.log('EXCELLENT');
-              process.chdir('../');
-          }
-      });
-      // var output = fs.createWriteStream('target.zip');
-      // var archive = archiver('zip');
+    //   zipFolder('./test', '../foo.zip', function(err) {
+    //       if(err) {
+    //           console.log('oh no!', err);
+    //       } else {
+    //           console.log('EXCELLENT');
+    //           process.chdir('../');
+    //       }
+    //   });
       
-      // output.on('close', function () {
-      //     console.log(archive.pointer() + ' total bytes');
-      //     console.log('archiver has been finalized and the output file descriptor has closed.');
-      // });
-      
-      // archive.on('error', function(err) {
-      //     throw err;
-      // });
-      
-      // archive.pipe(output);
-      // // append files from a sub-directory, putting its contents at the root of archive
-      // archive.directory('angular/test', true);
-
-      // archive.finalize();
-
-      
-      // the *entire* stdout and stderr (buffered)
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    });
-    return this.appService.build();
+    //   console.log(`stdout: ${stdout}`);
+    //   console.log(`stderr: ${stderr}`);
+    // });
+    return request;
   }
   
 }
